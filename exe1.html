@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title> Exercício Ajax </title>
+    <script>
+
+        $(document).ready(function (){
+
+            $("#bt1").click(function (){
+                $("#div1").load("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/categorias.php");
+            });
+
+            $("#bt2").click(function () {
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/produtos.php", function(dados){
+                   $("#div1").html(dados);
+                })
+            });
+
+            $("#bt3").click(function (){
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/produtos.php?",
+                    {
+                        categoria:$("#input1").val()
+                    },
+                    function (retorno) {
+                        $("#div1").html(retorno);
+                    })
+
+             });
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+<h1>Ajax</h1>
+
+<div id="div1"> </div>
+
+<button id="bt1">Click!</button>
+<button id="bt2">Click again!</button>
+<br><br>
+<input type="text" id="input1">
+<button id="bt3">Click me baby one more time!</button>
+<a href="https://www.youtube.com/watch?v=C-u5WLJ9Yk4">...ref</a>
+</body>
+</html>
